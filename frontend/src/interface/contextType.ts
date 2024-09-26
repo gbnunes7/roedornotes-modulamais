@@ -24,6 +24,7 @@ export interface contextType {
 	dieta: DietaRodent;
 	observacao: ObservacaoRodent;
 	setNome: Dispatch<SetStateAction<NomeRodent>>;
+	setData: Dispatch<SetStateAction<rodentData[]>>;
 	setEspecie: Dispatch<SetStateAction<EspecieRodent>>;
 	setIdade: Dispatch<SetStateAction<IdadeRodent>>;
 	setPeso: Dispatch<SetStateAction<PesoRodent>>;
