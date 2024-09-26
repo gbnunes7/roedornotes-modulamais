@@ -1,5 +1,5 @@
 import Button from "../../components/button";
-import Input from "../../components/input/intex";
+import Input from "../../components/input";
 import Title from "../../components/title";
 
 const Catalogar = () => {
@@ -106,7 +106,7 @@ const Catalogar = () => {
 						maxlength={30}
 					/>
 				</label>
-                <div className="flex gap-2">
+                <div className="flex gap-2 justify-center items-center">
                     <Button background="#041832" color="white">
                         Adicionar
                     </Button>
@@ -121,12 +121,3 @@ const Catalogar = () => {
 
 export default Catalogar;
 
-// nome: string;
-// 	especie: string;
-// 	idade: Number;
-// 	peso: Number;
-// 	status: string;
-// 	habitat: string;
-// 	comportamento: string;
-// 	dieta: string;
-// 	observacao: string;
