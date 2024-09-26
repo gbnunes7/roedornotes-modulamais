@@ -29,7 +29,19 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 	const [dieta, setDieta] = useState<DietaRodent>("");
 	const [foundRodent, setFoundRodent] = useState<rodentData | null>(null);
 	const [observacao, setObservacao] = useState<ObservacaoRodent>("");
-
+	const [isEditing, setIsEditing] = useState(false);
+	const [editableData, setEditableData] = useState({
+		nome,
+		especie,
+		idade,
+		peso,
+		status,
+		habitat,
+		comportamento,
+		dieta,
+		observacao,
+	});
+	
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -46,8 +58,12 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 		<AppContext.Provider
 			value={{
 				data,
-				foundRodent, 
+				foundRodent,
+				isEditing,
+				setIsEditing, 
 				setFoundRodent,
+				editableData,
+				setEditableData,
 				nome,
 				especie,
 				idade,

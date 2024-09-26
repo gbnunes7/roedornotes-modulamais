@@ -1,7 +1,33 @@
 import { MdDelete, MdEdit } from "react-icons/md";
 import { rodentData } from "../../interface/rodent";
+import useApp from "../../hooks/useAppContext";
 
-const CardDetail:React.FC<rodentData> = ({nome, especie, idade, peso, status, habitat, comportamento, dieta, observacao}) => {
+const CardDetail: React.FC<rodentData> = ({
+	nome,
+	especie,
+	idade,
+	peso,
+	status,
+	habitat,
+	comportamento,
+	dieta,
+	observacao,
+}) => {
+	const {
+		onHandleDelete,
+		isEditing,
+		toggleEdit,
+		editableData,
+		setEditableData,
+	} = useApp();
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const { name, value } = e.target;
+		setEditableData({
+			...editableData,
+			[name]: value,
+		});
+	};
+
 	return (
 		<div className="flex flex-col md:flex-row">
 			<img
@@ -10,21 +36,147 @@ const CardDetail:React.FC<rodentData> = ({nome, especie, idade, peso, status, ha
 				alt="Imagem"
 			/>
 			<div className="flex flex-col gap-4 p-4">
-				<span className="font-bold">Nome: {nome}</span>
-				<span className="font-bold">Especie: {especie}</span>
-				<span className="font-bold">Idade: {idade}</span>
-				<span className="font-bold">Peso: {peso}</span>
-				<span className="font-bold">Status: {status}</span>
-				<span className="font-bold">Habitat: {habitat}</span>
-				<span className="font-bold">Comportamento: {comportamento}</span>
-				<span className="font-bold">Dieta: {dieta}</span>
-				<span className="font-bold">Observação: {observacao}</span>
+				<span className="font-bold">
+					Nome:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="nome"
+							value={editableData.nome}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						nome
+					)}
+				</span>
+
+				<span className="font-bold">
+					Espécie:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="especie"
+							value={editableData.especie}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						especie
+					)}
+				</span>
+
+				<span className="font-bold">
+					Idade:{" "}
+					{isEditing ? (
+						<input
+							type="number"
+							name="idade"
+							value={editableData.idade}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						idade
+					)}
+				</span>
+
+				<span className="font-bold">
+					Peso:{" "}
+					{isEditing ? (
+						<input
+							type="number"
+							name="peso"
+							value={editableData.peso}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						peso
+					)}
+				</span>
+
+				<span className="font-bold">
+					Status:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="status"
+							value={editableData.status}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						status
+					)}
+				</span>
+
+				<span className="font-bold">
+					Habitat:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="habitat"
+							value={editableData.habitat}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						habitat
+					)}
+				</span>
+
+				<span className="font-bold">
+					Comportamento:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="comportamento"
+							value={editableData.comportamento}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						comportamento
+					)}
+				</span>
+
+				<span className="font-bold">
+					Dieta:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="dieta"
+							value={editableData.dieta}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						dieta
+					)}
+				</span>
+
+				<span className="font-bold">
+					Observação:{" "}
+					{isEditing ? (
+						<input
+							type="text"
+							name="observacao"
+							value={editableData.observacao}
+							onChange={handleChange}
+							className="border"
+						/>
+					) : (
+						observacao
+					)}
+				</span>
+
 				<div className="flex mt-16">
-					<button>
+					<button onClick={toggleEdit}>
 						<MdEdit className="text-3xl" />
 					</button>
 
-					<button>
+					<button onClick={onHandleDelete}>
 						<MdDelete className="text-3xl" />
 					</button>
 				</div>
