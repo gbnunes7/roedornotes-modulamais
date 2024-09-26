@@ -33,6 +33,10 @@ const useApp = () => {
 		setEditableData,
 		isOpen,
 		setIsOpen,
+		filteredWord,
+		setFilteredWord,
+		setError,
+		error,
 	} = useContext(AppContext)!;
 
 	const API_URL = "http://localhost:8080/roedores";
@@ -70,6 +74,17 @@ const useApp = () => {
 			navigate("/roedores");
 		} catch (err: any) {
 			console.error(err);
+		}
+	};
+
+	const onHandleFilter = () => {
+		const filtered = data.filter((data) => data.habitat !== filteredWord);
+
+		if (filtered.length === data.length) {
+			setError("Não há nenhum habitat com esse nome");
+		} else {
+			setData(filtered);
+			setError("")
 		}
 	};
 
@@ -132,6 +147,7 @@ const useApp = () => {
 		idade,
 		peso,
 		status,
+		error,
 		habitat,
 		comportamento,
 		dieta,
@@ -140,6 +156,7 @@ const useApp = () => {
 		foundRodent,
 		setNome,
 		setEspecie,
+		filteredWord,
 		setIdade,
 		setPeso,
 		setStatus,
@@ -156,6 +173,8 @@ const useApp = () => {
 		toggleEdit,
 		toggleMenu,
 		isOpen,
+		onHandleFilter,
+		setFilteredWord,
 	};
 };
 
