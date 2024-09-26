@@ -1,7 +1,7 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AppContext } from "../context/appContext";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const useApp = () => {
 	const {
@@ -25,10 +25,28 @@ const useApp = () => {
 		setDieta,
 		setObservacao,
 		setData,
+		foundRodent,
+		setFoundRodent,
 	} = useContext(AppContext)!;
 
 	const API_URL = "http://localhost:8080/roedores";
 	const navigate = useNavigate();
+	const { id } = useParams();
+
+	useEffect(() => {
+		const fetchRodent = async () => {
+			try {
+				console.log("Fetch rodent", id);
+				const res = await axios.get(API_URL + `/id/${id}`);
+				setFoundRodent(res.data);
+			} catch (error) {
+				console.error("Erro ao buscar roedor:", error);
+			}
+		};
+		if (id) {
+			fetchRodent();
+		}
+	}, [id]);
 
 	const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
@@ -93,6 +111,7 @@ const useApp = () => {
 		comportamento,
 		dieta,
 		observacao,
+		foundRodent,
 		setNome,
 		setEspecie,
 		setIdade,

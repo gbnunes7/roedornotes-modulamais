@@ -4,6 +4,7 @@ import Catalogar from "../pages/catalogar";
 import Home from "../pages/home";
 import Roedores from "../pages/roedores";
 import FixedLayout from "../components/fixedLayout";
+import RoedorDetail from "../pages/roedorDetail";
 
 function AppRoutes() {
 	return (
@@ -14,7 +15,8 @@ function AppRoutes() {
 						<Route path="/" element={<FixedLayout />}>
 							<Route path="/" element={<Home />} />
 							<Route path="/registrar" element={<Catalogar />} />
-							<Route path="/view" element={<Roedores />} />
+							<Route path="/roedores" element={<Roedores />} />
+							<Route path="/roedores/id/:id" element={<RoedorDetail />} />
 						</Route>
 					</Routes>
 				</AppProvider>

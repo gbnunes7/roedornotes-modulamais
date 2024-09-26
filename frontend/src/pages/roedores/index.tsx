@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import CardRoedor from "../../components/cardRoedor";
 import Title from "../../components/title";
 import useApp from "../../hooks/useAppContext";
@@ -14,12 +15,14 @@ const Roedores = () => {
 			<div className="bg-[#f8f8f5] rounded-lg p-4 w-full md:w-3/4 mx-auto shadow-2xl shadow-gray-500">
 				<ul className="flex flex-col md:grid md:grid-cols-3 md:gap-8 gap-4 justify-center items-center w-full md:w-4/4 md:p-8">
 					{data.map((item) => (
-						<li key={item.nome} className="flex justify-center w-full ">
-							<CardRoedor
-								alt={`Foto da capivara ${item.nome}`}
-								src="images/capivara.jpg"
-								nome={item.nome}
-							/>
+						<li key={Math.random()} className="flex justify-center w-full ">
+							<Link to={`/roedores/id/${item.id}`}>
+								<CardRoedor
+									alt={`Foto da capivara ${item.nome}`}
+									src="images/capivara.jpg"
+									nome={item.nome}
+								/>
+							</Link>
 						</li>
 					))}
 				</ul>
