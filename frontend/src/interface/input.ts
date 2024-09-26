@@ -5,4 +5,5 @@ export interface InputProps {
 	pattern: string;
 	maxlength?: number;
 	minlength?: number;
+	onchange: (event: React.ChangeEvent<HTMLInputElement>) => void; 
 }
