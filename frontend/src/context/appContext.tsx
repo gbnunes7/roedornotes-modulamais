@@ -27,6 +27,7 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 	const [habitat, setHabitat] = useState<HabitatRodent>("");
 	const [comportamento, setComportamento] = useState<ComportamentoRodent>("");
 	const [dieta, setDieta] = useState<DietaRodent>("");
+	const [foundRodent, setFoundRodent] = useState<rodentData | null>(null);
 	const [observacao, setObservacao] = useState<ObservacaoRodent>("");
 
 	useEffect(() => {
@@ -45,6 +46,8 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 		<AppContext.Provider
 			value={{
 				data,
+				foundRodent, 
+				setFoundRodent,
 				nome,
 				especie,
 				idade,
