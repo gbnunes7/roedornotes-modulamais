@@ -1,4 +1,4 @@
-import { IoIosMenu } from "react-icons/io";
+import HamburgerMenu from "../menuHamburguer";
 
 const Header = () => {
 	return (
@@ -8,9 +8,8 @@ const Header = () => {
 				alt="Imagem da logo"
 				className="max-w-[200px]"
 			/>
-			<button>
-				<IoIosMenu className="text-4xl bg-blue-200 rounded p-[2px]" />
-			</button>
+
+			<HamburgerMenu />
 		</header>
 	);
 };
