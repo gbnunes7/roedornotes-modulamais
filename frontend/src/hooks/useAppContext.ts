@@ -31,6 +31,8 @@ const useApp = () => {
 		setIsEditing,
 		editableData,
 		setEditableData,
+		isOpen,
+		setIsOpen,
 	} = useContext(AppContext)!;
 
 	const API_URL = "http://localhost:8080/roedores";
@@ -51,6 +53,10 @@ const useApp = () => {
 			fetchRodent();
 		}
 	}, [id]);
+
+	const toggleMenu = () => {
+		setIsOpen(!isOpen);
+	};
 
 	const toggleEdit = async () => {
 		setIsEditing(!isEditing);
@@ -146,7 +152,10 @@ const useApp = () => {
 		onHandleSubmit,
 		onHandleClear,
 		onHandleDelete,
+		navigate,
 		toggleEdit,
+		toggleMenu,
+		isOpen,
 	};
 };
 
