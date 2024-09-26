@@ -7,6 +7,7 @@ const Input: React.FC<InputProps> = ({
 	pattern,
 	minlength,
 	maxlength,
+	onchange
 }) => {
 	return (
 		<input
@@ -14,6 +15,7 @@ const Input: React.FC<InputProps> = ({
 			value={value}
 			placeholder={placeholder}
 			required
+			onChange={onchange}
 			pattern={pattern}
 			minLength={minlength}
 			maxLength={maxlength}
