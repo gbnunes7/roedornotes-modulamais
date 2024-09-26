@@ -43,8 +43,9 @@ const useApp = () => {
 				console.error("Erro ao buscar roedor:", error);
 			}
 		};
-
-		fetchRodent();
+		if (id) {
+			fetchRodent();
+		}
 	}, [id]);
 
 	const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
