@@ -14,6 +14,8 @@ import {
 
 export interface contextType {
 	data: rodentData[];
+	foundRodent: rodentData | null;
+	setFoundRodent: Dispatch<SetStateAction<rodentData | null>>;
 	nome: NomeRodent;
 	especie: EspecieRodent;
 	idade: IdadeRodent;
