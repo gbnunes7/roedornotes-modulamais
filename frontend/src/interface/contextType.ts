@@ -35,4 +35,8 @@ export interface contextType {
 	setComportamento: Dispatch<SetStateAction<ComportamentoRodent>>;
 	setDieta: Dispatch<SetStateAction<DietaRodent>>;
 	setObservacao: Dispatch<SetStateAction<ObservacaoRodent>>;
+	isEditing: boolean,
+	setIsEditing: Dispatch<SetStateAction<boolean>>;
+	editableData: rodentData,
+	setEditableData: Dispatch<SetStateAction<rodentData>>;
 }

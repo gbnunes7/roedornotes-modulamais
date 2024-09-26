@@ -27,6 +27,10 @@ const useApp = () => {
 		setData,
 		foundRodent,
 		setFoundRodent,
+		isEditing,
+		setIsEditing,
+		editableData,
+		setEditableData,
 	} = useContext(AppContext)!;
 
 	const API_URL = "http://localhost:8080/roedores";
@@ -48,6 +52,21 @@ const useApp = () => {
 		}
 	}, [id]);
 
+	const toggleEdit = async () => {
+		setIsEditing(!isEditing);
+	};
+
+	const onHandleDelete = async () => {
+		try {
+			await axios.delete(API_URL + `/id/${id}`);
+			const newRes = await axios.get(API_URL);
+			setData(newRes.data);
+			navigate("/roedores");
+		} catch (err: any) {
+			console.error(err);
+		}
+	};
+
 	const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
@@ -68,7 +87,7 @@ const useApp = () => {
 		try {
 			await axios.post(API_URL, newRegister);
 			setData([...data, newRegister]);
-			navigate("/view");
+			navigate("/roedores");
 			console.log("Feito novo registro.");
 		} catch (err) {
 			console.error(err);
@@ -110,6 +129,7 @@ const useApp = () => {
 		habitat,
 		comportamento,
 		dieta,
+		isEditing,
 		observacao,
 		foundRodent,
 		setNome,
@@ -117,12 +137,16 @@ const useApp = () => {
 		setIdade,
 		setPeso,
 		setStatus,
+		editableData,
+		setEditableData,
 		setHabitat,
 		setComportamento,
 		setDieta,
 		setObservacao,
 		onHandleSubmit,
 		onHandleClear,
+		onHandleDelete,
+		toggleEdit,
 	};
 };
 
