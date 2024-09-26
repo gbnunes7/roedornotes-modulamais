@@ -41,4 +41,8 @@ export interface contextType {
 	setEditableData: Dispatch<SetStateAction<rodentData>>;
 	isOpen: boolean;
 	setIsOpen: Dispatch<SetStateAction<boolean>>;
+	filteredWord: string;
+	setFilteredWord: Dispatch<SetStateAction<string>>;
+	error: string;
+	setError: Dispatch<SetStateAction<string>>;
 }
