@@ -1,5 +1,5 @@
 export interface rodentData {
-	id: Number;
+	id?: Number;
 	nome: string;
 	especie: string;
 	idade: string;
