@@ -61,7 +61,7 @@ class Controller {
 
 	async createNew(req, res) {
 		try {
-			const data = req.params;
+			const data = req.body;
 			const newReg = await this.entityService.createNew(data);
 			return res.status(200).json(newReg);
 		} catch (err) {
