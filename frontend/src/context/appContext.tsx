@@ -55,6 +55,7 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 				dieta,
 				observacao,
 				setNome,
+				setData,
 				setEspecie,
 				setIdade,
 				setPeso,

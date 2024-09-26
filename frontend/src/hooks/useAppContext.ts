@@ -1,5 +1,7 @@
 import { useContext } from "react";
 import { AppContext } from "../context/appContext";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const useApp = () => {
 	const {
@@ -22,10 +24,15 @@ const useApp = () => {
 		setComportamento,
 		setDieta,
 		setObservacao,
+		setData,
 	} = useContext(AppContext)!;
 
-	const onHandleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+	const API_URL = "http://localhost:8080/roedores";
+	const navigate = useNavigate();
+
+	const onHandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
+
 		const newRegister = {
 			nome,
 			idade,
@@ -38,8 +45,16 @@ const useApp = () => {
 			dieta,
 		};
 
-		console.log(newRegister);
 		onHandleClear();
+
+		try {
+			await axios.post(API_URL, newRegister);
+			setData([...data, newRegister]);
+			navigate("/view");
+			console.log("Feito novo registro.");
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	const onHandleClear = () => {
