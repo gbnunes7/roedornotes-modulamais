@@ -5,8 +5,10 @@ import Title from "../../components/title";
 const Catalogar = () => {
 	return (
 		<div className="flex items-center justify-center">
-			<form className="bg-[#f8f8f5] flex flex-col gap-6 w-full max-w-lg p-6 rounded-lg shadow-2xl shadow-gray-500 mx-6 my-4">
-                <Title>Adicione aqui seu roedor favorito!</Title>
+			<form className="bg-[#f8f8f5] md:grid md:grid-cols-2 md:p-16 md:gap-8 md:w-3/4 flex flex-col gap-6 w-full p-6 rounded-lg shadow-2xl shadow-gray-500 mx-6 my-4">
+				<div className="col-span-full">
+					<Title>Adicione aqui seu roedor favorito!</Title>
+				</div>
 				<label htmlFor="" className="flex flex-col gap-2 text-gray-700">
 					Nome
 					<Input
@@ -100,24 +102,23 @@ const Catalogar = () => {
 					<Input
 						type="text"
 						value=""
-						placeholder="Digite alguma observação, caso não tenha escrever N/A..."
+						placeholder="Digite alguma observação, caso não tenha, escrever N/A..."
 						pattern="[A-Za-zÀ-ÿ\s]+"
 						minlength={3}
 						maxlength={30}
 					/>
 				</label>
-                <div className="flex gap-2 justify-center items-center">
-                    <Button background="#041832" color="white">
-                        Adicionar
-                    </Button>
-                    <Button background="transparent" color="black">
-                        Limpar
-                    </Button>
-                </div>
+				<div className="flex gap-2 justify-center items-center md:col-span-full md:mt-4 md:gap-8">
+					<Button background="#041832" color="white">
+						Adicionar
+					</Button>
+					<Button background="transparent" color="black">
+						Limpar
+					</Button>
+				</div>
 			</form>
 		</div>
 	);
 };
 
 export default Catalogar;
-
