@@ -42,6 +42,8 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 		observacao,
 	});
 	const [isOpen, setIsOpen] = useState(false);
+	const [filteredWord, setFilteredWord] = useState("");
+	const [error, setError] = useState("");
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -61,6 +63,10 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 				data,
 				foundRodent,
 				isEditing,
+				error,
+				setError,
+				filteredWord,
+				setFilteredWord,
 				setIsEditing,
 				setFoundRodent,
 				editableData,
