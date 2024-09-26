@@ -41,7 +41,8 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 		dieta,
 		observacao,
 	});
-	
+	const [isOpen, setIsOpen] = useState(false);
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -60,7 +61,7 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 				data,
 				foundRodent,
 				isEditing,
-				setIsEditing, 
+				setIsEditing,
 				setFoundRodent,
 				editableData,
 				setEditableData,
@@ -82,6 +83,8 @@ const AppProvider: React.FC<isAChild> = ({ children }) => {
 				setHabitat,
 				setComportamento,
 				setDieta,
+				isOpen,
+				setIsOpen,
 				setObservacao,
 			}}
 		>
